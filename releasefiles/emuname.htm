@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>emuname doc</title>
+	<link rel="shortcut icon" href=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC41ZYUyZQAAAFZJREFUOE9jFBRU+M9AAWCC0mSDgTcAHgZypm5gARh4dHoXmEYXBwGYHAiAXQBTBJLApRGXHIoXQBLYbMQHUAyA2YJsGyEANgDZaciYGDCakIaBAQwMAPhYJOHLNBHJAAAAAElFTkSuQmCC">
+<style>
+body {
+	margin: 0px;
+	background: linear-gradient(to top right, rgb(67, 90, 122), rgb(34,34,64));
+	color: #333;
+}
+body, table {
+	font-family: Consolas, Andale Mono, Courier New;
+	font-size: 11px;
+}
+h1 {
+	margin-bottom: 5px;
+	margin-top: 0px;
+}
+h2, h3 {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+h1, h2, h3 {
+	font-family: sans-serif;
+}
+table {
+	width: 100%;
+	background-color: #FFF;
+	border: 1px solid #CCC;
+}
+td {
+	padding: 4px;
+	vertical-align: top;
+}
+tbody tr:hover {
+	background-color: rgb(197, 220, 232);
+}
+tr:nth-child(even) {
+	background-color: #F4F4F4;
+}
+table.members tbody td:nth-child(2) {
+	width: 360px;
+}
+table.members tbody td:nth-child(1) {
+	width: 80px;
+	white-space: nowrap;
+	padding-left: 20px;
+}
+tr.header {
+	font-weight: bold;
+	background-color: #DDD;
+	color: #666;
+}
+tr.header td {
+	padding-left: 5px !important;
+}
+tr.header:hover {
+	background-color: #DDD;
+}
+.main {
+	padding: 20px;
+	background-color: #FFF;
+	max-width: 1200px;
+	margin: auto;
+	margin-bottom: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.container {
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border: 1px solid #CCC;
+	background-color: #EEE;
+	margin-bottom: 10px;
+}
+.subcontainer {
+	padding: 10px;
+	border: 1px solid #CCC;
+	background-color: #FFF;
+	margin-bottom: 10px;
+}
+.container h2 {
+	margin-top: 15px;
+}
+.classlink {
+	font-weight: bold;
+	text-decoration: none;
+	display: inline-block;
+	line-height: 11px;
+}
+.classlink:hover {
+	border-bottom: 1px dotted rgb(27, 70, 102);
+}
+table {
+	border-collapse: collapse;
+}
+hr {
+	border: none;
+	border-top:1px dotted #888;
+}
+a {
+	color: rgb(27, 70, 102);
+	text-decoration: none;
+}
+.code {
+	white-space: pre;
+	font-family: consolas;
+	color: #FFF;
+	display: inline-block;
+	padding: 10px;
+	margin: 10px;
+	color: #FFFFFF;
+	background: rgb(51, 62, 93);
+	text-shadow: rgba(0, 0, 0, 0.5) -1px 1px 0px;
+	min-width: 400px;
+}
+.code::-moz-selection, .code span::-moz-selection {
+	text-shadow: none;
+	background-color: #EEE;
+	color: rgb(27, 50, 82);
+}
+.code::selection {
+	text-shadow: none;
+	background-color: #EEE;
+	color: rgb(27, 50, 82);
+} 
+.snip {
+	color: #111;
+	background-color: #CCC;
+	padding: 0px 2px;
+	font-family: Consolas, Andale Mono, Courier New;
+	font-size: 11px;
+}
+.extlink {
+	text-decoration: none;
+	font-style: italic;
+}
+.download-link:before {
+	content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC41ZYUyZQAAAHlJREFUOE+NztENgDAQAtBu5BaO4v4bnMHkDCC2/XgfNNB2VJU4zqtmvC8B0oh5XwKkEfO+BEgj5n0JkEbM+xIgjZj3JUAaMe9LgDRi3l8OVrZe/fP8oL+SCjO9ey+AVEx4IxdAGjDvS2hpCN6Dz0HbGUM8bKtxVY0bMgdih8ADHAMAAAAASUVORK5CYII=');
+	margin-right: 5px;
+}
+.download-link {
+	border: 1px dotted #888;
+	background-color: #EEE;
+	padding: 10px;
+	font-weight: bold;
+	font-family: sans-serif;
+	font-size: 1.3em;
+	display: inline-block;
+	margin: 10px;
+	align-items: center;
+}
+.desc {
+	font-family: sans-serif;
+	font-size: 1.2em;
+}
+.qualified {
+	margin-bottom: 5px;
+}
+.java .c0 {color: #FFFF55;}
+.java .c1 {color: #FFCC55; font-weight:bold;}
+.java .c2 {color: #66FF55; font-weight:bold;}
+.java .c3 {color: #FF6655; font-weight:bold;}
+.java .c4 {color: #FF8055;}
+.javascript .c0 {color: #FFFF55;}
+.javascript .c1 {color: #FFCC55; font-weight:bold;}
+.javascript .c2 {color: #66FF55; font-weight:bold;}
+.javascript .c3 {color: #FF6655; font-weight:bold;}
+.javascript .c4 {color: #FF8055;}
+</style>
+</head>
+<body>
+<div class="main">
+	<div>
+		<img style="float: right;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC41ZYUyZQAAAHZJREFUWEdjFBRU+M8wgIAJSg8YGHXAqANGHYBRDsiZukFZ2MGj07ugLAggpB4G0PXBwOAJAXSfEPIpTJ5cfTAweBMhyOXImFZg6KQBXICQPkLyQ68cgAGYT4ZfCNAbDN5ygF5g1AGjDhh1wKgDRh0wwA5gYAAA/rAuJcz+gzkAAAAASUVORK5CYII=">
+		<span style="font-size: 2.25em; font-family: sans-serif; font-weight: bold">emuname documentation</span>
+		<span style="margin-left: 20px;">2016 Mar 18</span>
+	</div>
+	<hr>
+	<a class="classlink" href="#Plugins">Plugins</a> -
+	<a class="classlink" href="#Class_Emuname">Class Emuname</a> -
+	<a class="classlink" href="#Class_ENPlugin">Abstract Class ENPlugin</a> -
+	<!--<a class="classlink" href="#Class_ENPluginHook">Class ENPluginHook</a> - -->
+	<a class="classlink" href="#Interface_ENMethod">Interface ENMethod</a> -
+	<a class="classlink" href="#Class_ENEvent">Class ENEvent</a><br>
+	<a class="classlink" href="#Class_PixelCanvas">Class PixelCanvas</a> -
+	<a class="classlink" href="#Class_NES">Class NES</a> -
+	<a class="classlink" href="#Class_Memory">Class Memory</a> -
+	<a class="classlink" href="#Class_Mapper">Class Mapper</a> -
+	<a class="classlink" href="#Class_CPU6502">Class CPU6502</a> -
+	<a class="classlink" href="#Class_PPU2C02">Class PPU2C02</a> -
+	<a class="classlink" href="#Script_engine">Script engine</a>
+</div>
+<div class="main">
+	<h1 id="Plugins">Plugins</h1>
+	<div class="container">
+	<h2>To create a plugin</h2>
+	<div class="subcontainer">
+		&bull;&nbsp;Add the path to <i>emuname.jar</i> to your compiler's classpath<br>
+		&bull;&nbsp;Write an <a class="classlink" href="#Class_ENPlugin">ENPlugin</a> subclass, importing <i>net.shygoo.emuname.*</i><br>
+		&bull;&nbsp;Write a constructor for the class which has no parameters and calls <span class="snip">super(String id, int initOrder)</span><br>
+		&bull;&nbsp;Override <span class="snip">init(<a href="#Class_Emuname">Emuname</a> emuname)</span><br>
+		&bull;&nbsp;You may use <span class="snip">emuname.on</span> to add methods to hooks, and <span class="snip">emuname.addPluginMenuItem</span> to add plugin items to the <i>Plugins</i> menu<br>
+		&bull;&nbsp;JAR your class(es), with the <i>Main-Class</i> attribute of the JAR's manifest set to your <a class="classlink" href="#Class_ENPlugin">ENPlugin</a> subclass's fully qualified name<br>
+		&bull;&nbsp;Drop the JAR in emuname's <i>plugins</i> directory<br>
+	</div>
+	<h2>Example</h2>
+	<div class="subcontainer">
+		<i>This plugin uses the active Graphics2D object of every frame to draw "Hello world" to the screen.</i>
+		<hr>
+		<i>MyPlugin.java</i>
+		<br>
+		<div class="java code">package example.plugin;
+import net.shygoo.emuname.*;
+import java.awt.Graphics2D;
+
+public class MyPlugin extends ENPlugin {
+  public MyPlugin(){
+    super("my_plugin", 0);
+  }
+  public void init(Emuname emuname){
+    emuname.on("drawend", (e) -> {
+      e.getGraphics().drawString("Hello World!", 20, 20);
+    });
+  }
+}</div>
+	<br>
+	<i>Manifest.txt</i>
+	<br>
+	<div class="code">Manifest-Version: 1.0
+Main-Class: example.plugin.MyPlugin
+	</div>
+	<br>
+	<i>build.bat</i>
+	<br>
+	<div class="code">@echo off
+set /p emunamejar="Enter path to emuname.jar: "
+mkdir bin
+javac -d bin -cp .;%emunamejar% MyPlugin.java
+cd bin
+jar -cmf ../Manifest.txt ../MyPlugin.jar .
+cd ..
+rmdir /q /s bin
+pause</div>
+	<br>
+	<a href="http://shygoo.net/"><div class="download-link">MyPlugin.zip</div></a>
+	</div>
+	<h2>Available plugin hooks</h2>
+	<table>
+		<tbody>
+			<tr class="header"><td>ID</td><td>Execution time</td><td><a href="#Class_ENEvent">ENEvent</a> type</td></tr>
+			<tr><td>load</td><td>After emuname has launched and finished loading all assets</td><td>EVENT_NULL</td></tr>
+			<tr><td>execstart</td><td>Before every frame's execution phase</td><td>EVENT_GRAPHICS</td></tr>
+			<tr><td>drawstart</td><td>Before every frame is drawn</td><td>EVENT_GRAPHICS</td></tr>
+			<tr><td>draw</td><td>After every frame is drawn</td><td>EVENT_GRAPHICS</td></tr>
+			<tr><td>stepstart</td><td>Before every CPU step</td><td>EVENT_NULL</td></tr>
+			<tr><td>step</td><td>After every CPU step</td><td>EVENT_NULL</td></tr>
+			<tr><td>click</td><td>When mouse clicks the game screen</td><td>EVENT_MOUSE</td></tr>
+			<tr><td>wheel</td><td>When mouse wheel is scrolled on the game screen</td><td>EVENT_WHEEL</td></tr>
+			<tr><td>mouseover</td><td>When mouse enters the game screen</td><td>EVENT_MOUSE</td></tr>
+			<tr><td>mouseout</td><td>When mouse exits the game screen</td><td>EVENT_MOUSE</td></tr>
+			<tr><td>mousemove</td><td>When mouse moves over the game screen</td><td>EVENT_MOUSE</td></tr>
+			<tr><td>mousedown</td><td>When mouse button is pressed on the game screen</td><td>EVENT_MOUSE</td></tr>
+			<tr><td>mouseup</td><td>When mouse button is released on the game screen</td><td>EVENT_MOUSE</td></tr>
+			<tr><td>keyup</td><td>When key is released</td><td>EVENT_KEY</td></tr>
+			<tr><td>keydown</td><td>When key is pressed</td><td>EVENT_KEY</td></tr>
+		</tbody>
+	</table>
+	<h2>Default plugins</h2>
+	<table>
+		<tbody>
+			<tr class="header"><td>ID</td><td>Initiation order</td><td>JAR file</td></tr>
+			<tr><td>default_menus</td><td>0</td><td>DefaultMenus.jar</td></tr>
+			<tr><td>debugger</td><td>1</td><td>Debugger.jar</td></tr>
+			<tr><td>crt_effects</td><td>1</td><td>CRTEffects.jar</td></tr>
+		</tbody>
+	</table>
+	<h2>Default plugin menu items</h2>
+	<table>
+		<tr class="header"><td>ID</td><td>Defining plugin</td><td>Caption</td><td>Function</td><td>Java class</td></tr>
+		<tr><td>dbg</td><td>default_menus</td><td>Debugging</td><td>Debugger submenu</td><td>JMenu</td></tr>
+		<tr><td>dbg_memory</td><td>debugger</td><td>&gt; Memory...</td><td>Shows memory window</td><td>JMenuItem</td></tr>
+		<tr><td>dbg_scanner</td><td>debugger</td><td>&gt; Memory scanner...</td><td>Shows memory scanner window</td><td>JMenuItem</td></tr>
+		<tr><td>dbg_commands</td><td>debugger</td><td>&gt; Commands...</td><td>Shows CPU commands window</td><td>JMenuItem</td></tr>
+		<tr><td>games</td><td>default_menus</td><td>Games</td><td>Submenu for game-specific plugins</td><td>JMenu</td></tr>
+		<tr><td>games_balloon_fight_mouse</td><td>balloon_fight_mouse</td><td>&gt; Balloon fight dragger</td><td>Toggles Balloon Fight entity drag n' drop</td><td>JMenuItem</td></tr>
+		<tr><td>vid</td><td>default_menus</td><td>Video filters</td><td>Submenu for video filters</td><td>JMenu</td></tr>
+		<tr><td>vid_smoothing</td><td>crt_effects</td><td>&gt; Bilinear smoothing</td><td>Toggles Bilinear smoothing</td><td>JCheckBoxMenuItem</td></tr>
+		<tr><td>vid_scanlines</td><td>crt_effects</td><td>&gt; CRT Scanlines</td><td>Toggles CRT-like scanlines</td><td>JCheckBoxMenuItem</td></tr>
+		<tr><td>vid_noise</td><td>crt_effects</td><td>&gt; CRT Noise</td><td>Toggles CRT-like noise</td><td>JCheckBoxMenuItem</td></tr>
+	</table>
+</div>
+</div>
+<div class="main">
+	<h1 id="Class_Emuname">Class Emuname</h1>
+	<div class="qualified">net.shygoo.emuname.Emuname extends <a target="_blank" class="extlink" href="https://docs.oracle.com/javase/7/docs/api/javax/swing/JFrame.html">javax.swing.JFrame</a></div>
+	<div class="subcontainer desc">The main window.</div>
+	<div class="container">
+		<h2>Fields</h2>
+		<table class="members">
+			<tbody>
+				<tr><td><a class="classlink" href="#Class_NES">NES</a></td><td>nes</td><td></td></tr>
+			</tbody>
+		</table>
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<tr><td><a class="classlink" href="#Class_NES">NES</a></td><td>getNes()</td><td>Returns the NES object</td></tr>
+				<tr><td><a class="classlink" href="#Class_PixelCanvas">PixelCanvas</a></td><td>getScreen()</td><td>Returns the PixelCanvas component</td></tr>
+				<tr><td><a class="classlink" href="#Class_Config">Config</a></td><td>getConfig()</td><td>Returns the config object</td></tr>
+				<tr class="header"><td colspan="3">System</td></tr>
+				<tr><td>void</td><td>reset()</td><td>Soft-resets game</td></tr>
+				<tr><td>void</td><td>pause()</td><td>Pauses emulation</td></tr>
+				<tr><td>void</td><td>resume()</td><td>Resumes emulation</td></tr>
+				<tr><td>void</td><td>end()</td><td>Stops emulation and shows the rom selection screen</td></tr>
+				<tr class="header"><td colspan="3">Plugin management</td></tr>
+				<tr><td>int</td><td>on(String hookId, <a class="extlink" href="#Interface_ENMethod">ENMethod</a> method)</td><td>Adds a method to the hook specified by <span class="snip">hookId</span><br>Returns a unique numeric ID for the method</td></tr>
+				<tr><td>void</td><td>off(String hookId, int id)</td><td>Removes a method from the hook specified by <span class="snip">hookId</span></td></tr>
+				<tr><td><a class="classlink" href="#Class_ENPlugin">ENPlugin</a></td><td>getPlugin(String id)</td><td>Returns a plugin object by <span class="snip">id</span></td></tr>
+				<tr><td>String[]</td><td>getPluginIds()</td><td>Returns an array of existing plugin IDs</td></tr>
+				<tr><td>void</td><td>addPluginMenuItem(String id, <a class="extlink" target="_blank" href="https://docs.oracle.com/javase/7/docs/api/javax/swing/JMenuItem.html">JMenuItem</a> menuItem)                                 </td><td>Adds <span class="snip">menuItem</span> to the plugin menu</td></tr>
+				<tr><td>void</td><td>addPluginMenuItem(String id, String attachToId,<br>&nbsp;<a class="extlink" target="_blank" href="https://docs.oracle.com/javase/7/docs/api/javax/swing/JMenuItem.html">JMenuItem</a> menuItem)              </td><td>Adds <span class="snip">menuItem</span> to an existing menu item specified by attachToId</td></tr>
+				<tr><td>void</td><td>addPluginMenuItem(String id, JFrame frame,<br>&nbsp;String itemCaption)</td><td>Adds <span class="snip">menuItem</span> that shows <span class="snip">frame</span> when clicked</td></tr>
+				<tr><td>void</td><td>addPluginMenuItem(String id, String attachToId,<br>&nbsp;JFrame frame, String itemCaption)</td><td>Adds a MenuItem to an existing menu item specified by attachToId<br>Shows <span class="snip">frame</span> when clicked</td></tr>
+				<tr><td><a class="extlink" target="_blank" href="https://docs.oracle.com/javase/7/docs/api/javax/swing/JMenuItem.html">JMenuItem</a></td><td>getPluginMenuItem(String id)</td><td>Returns a plugin menu item by <span class="snip">id</span></td></tr>
+				<tr><td>String[]</td><td>getPluginMenuItemIds()</td><td>Returns an array of existing plugin menu IDs</td></tr>
+				<!--<tr class="header"><td colspan="3">Misc</td></tr>-->
+				<!--<tr><td>int</td><td>getMouseX()</td><td>Returns the last known mouse X position on the game screen</td></tr>-->
+				<!--<tr><td>int</td><td>getMouseY()</td><td>Returns the last known mouse Y position on the game screen</td></tr>-->
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="main">
+	<h1 id="Class_ENPlugin">Abstract Class ENPlugin</h1>
+	<div class="qualified">net.shygoo.emuname.ENPlugin</div>
+	<div class="subcontainer desc">Abstract class for subclassing third party emuname plugins. Subclasses must invoke <span class="snip">super(String id, int initOrder)</span> to define the plugin's final identification string and initiation order.</span></div>
+	<div class="container">
+		<h2>Constructor</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>-</td><td>ENPlugin(String id, int initOrder)</td><td></td></tr>
+			</tbody>
+		</table>
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>abstract void</td><td>init(Emuname emuname)</td><td>Serves as a post-constructor, providing access to <span class="snip">emuname</span></tr>
+				<tr><td>String</td><td>getId()</td><td>Returns the plugin's ID string</tr>
+				<tr><td>int</td><td>getInitOrder()</td><td>Returns the plugin's initiation order</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<!--
+abstracted behind Emuname#on
+
+<div class="main">
+	<h1 id="Class_ENPluginHook">Class ENPluginHook</h1>
+	net.shygoo.emuname.ENPluginHook
+	<div class="container">
+		<h2>Constructor</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>-</td><td>ENPluginHook()</td><td></td></tr>
+			</tbody>
+		</table>
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>int</td><td>addMethod(ENMethod method, int order)</td><td>Inserts an ENMethod into the internal array<br>Returns unique numeric ID</td></tr>
+				<tr><td>void</td><td>removeMethod(int id)</td><td>Removes an ENMethod from the internal array</td></tr>
+				<tr><td>int</td><td>getLastOrder()</td><td>Returns the last ENMethod</td></tr>
+				<tr><td>void</td><td>invokeMethods()</td><td>Invokes the run() method of every ENMethod</td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+-->
+<div class="main">
+	<h1 id="Interface_ENMethod">Interface ENMethod</h1>
+	<div class="qualified">net.shygoo.emuname.ENMethod</div>
+	<div class="subcontainer desc">Functional interface for the plugin hooks of emuname.</div>
+	<div class="container">
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>void</td><td>run(ENEvent e)</td><td>The method</td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="main">
+	<h1 id="Class_ENEvent">Class ENEvent</h1>
+	<div class="qualified">net.shygoo.emuname.ENEvent</div>
+	<div class="subcontainer desc">Wrapper class for various events. Invoked instance methods will throw runtime exceptions if they aren't supported by the event type.</div>
+	<div class="container">
+		<h2>Constructors</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>-</td><td>ENEvent()</td><td>Constructs an ENEvent object with the type set to <span class="snip">EVENT_NULL</span></td></tr>
+				<tr><td>-</td><td>ENEvent(<a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/MouseEvent.html">MouseEvent</a> e, double xScale, double yScale)</td><td>Constructs an ENEvent object with the type set to <span class="snip">EVENT_MOUSE</span></td></tr>
+				<tr><td>-</td><td>ENEvent(<a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/MouseWheelEvent.html">MouseWheelEvent</a> e, double xScale, double yScale)</td><td>Constructs an ENEvent object with the type set to <span class="snip">EVENT_WHEEL</span></td></tr>
+				<tr><td>-</td><td>ENEvent(<a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html">KeyEvent</a> e)</td><td>Constructs an ENEvent object with the type set to <span class="snip">EVENT_KEY</span></td></tr>
+				<tr><td>-</td><td>ENEvent(<a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics2D.html">Graphics2D</a> g)</td><td>Constructs an ENEvent object with the type set to <span class="snip">EVENT_GRAPHICS</span></td></tr>
+			</tbody>
+		</table>
+		<h2>Fields</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>static int</td><td>EVENT_NULL</td><td>(0) Indicates no associated event</td></tr>
+				<tr><td>static int</td><td>EVENT_MOUSE</td><td>(1) Indicates mouse event</td></tr>
+				<tr><td>static int</td><td>EVENT_WHEEL</td><td>(2) Indicates mouse wheel event</td></tr>
+				<tr><td>static int</td><td>EVENT_KEY</td><td>(3) Indicates keyboard event</td></tr>
+				<tr><td>static int</td><td>EVENT_GRAPHICS</td><td>(4) Indicates graphical object</td></tr>
+			</tbody>
+		</table>
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<tr class="header"><td colspan="3">Shared methods</td></tr>
+				<tr><td>int</td><td>getType()</td><td>Returns the instance's numeric event type</td></tr>
+				<tr><td>String</td><td>getTypeName()</td><td>Returns the name of the instance's event type</td></tr>
+				<tr><td>void</td><td>preventDefault()</td><td>Consumes the instance's AWT event if applicable, and sets the default-prevented state to true</td></tr>
+				<tr><td>boolean</td><td>isDefaultPrevented()</td><td>Returns the default-prevented state</td></tr>
+				<tr class="header"><td colspan="3">For EVENT_MOUSE and EVENT_WHEEL</td></tr>
+				<tr><td>int</td><td>getX()</td><td>Returns the scaled x position of the cursor on the game screen</td></tr>
+				<tr><td>int</td><td>getY()</td><td>Returns the scaled y position of the cursor on the game screen</td></tr>
+				<tr><td>int</td><td>getAbsX()</td><td>Returns the unscaled x position of the cursor on the game screen</td></tr>
+				<tr><td>int</td><td>getAbsY()</td><td>Returns the unscaled y position of the cursor on the game screen</td></tr>
+				<tr><td><a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/MouseEvent.html">MouseEvent</a></td><td>getMouseEvent()</td><td>Returns the associated AWT <a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/MouseEvent.html">MouseEvent</a></td></tr>
+				<tr class="header"><td colspan="3">For EVENT_WHEEL</td></tr>
+				<tr><td><a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/MouseWheelEvent.html">MouseWheelEvent</a></td><td>getMouseWheelEvent()</td><td>Returns the associated AWT <a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/MouseWheelEvent.html">MouseWheelEvent</a></td></tr>
+				<tr><td>int</td><td>getScrollAmount()</td><td>Returns the event's mouse wheel scroll amount</td></tr>
+				<tr class="header"><td colspan="3">For EVENT_KEY</td></tr>
+				<tr><td><a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html">KeyEvent</a></td><td>getKeyEvent()</td><td>Returns the associated AWT <a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/event/KeyEvent.html">KeyEvent</a></td></tr>
+				<tr><td>int</td><td>getKeyCode()</td><td>Returns the event's key code</td></tr>
+				<tr><td>char</td><td>getKeyChar()</td><td>Returns the event's key character</td></tr>
+				<tr class="header"><td colspan="3">For EVENT_GRAPHICS</td></tr>
+				<tr><td><a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics2D.html">Graphics2D</a></td><td>getGraphics()</td><td>Returns the associated AWT <a class="extlink" href="https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics2D.html">Graphics2D</a></td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="main">
+	<h1 id="Class_NES">Class NES</h1>
+	<div class="qualified">net.shygoo.emuname.NES</div>
+	<div class="container">
+		<h2>Constructor</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>-</td><td>NES()</td><td>Constructs a NES emulator</td></tr>
+			</tbody>
+		</table>
+		<h2>Fields</h2>
+		<table class="members">
+			<tbody>
+				<tr class="header"><td colspan="3">INES file format constants</td></tr>
+				<tr><td>static int</td><td>INES_HEADERSIZE        </td><td>(16) iNES rom header size                         </td></tr>
+				<tr><td>static int</td><td>INES_HEADER_PRGROM_SIZE</td><td>(0x04) iNES rom offset of program rom size byte   </td></tr>
+				<tr><td>static int</td><td>INES_HEADER_CHRROM_SIZE</td><td>(0x05) iNES rom offset of character rom size byte </td></tr>
+				<tr><td>static int</td><td>INES_HEADER_FLAGS6     </td><td>(0x06) iNES rom offset of flags6 byte             </td></tr>
+				<tr><td>static int</td><td>INES_HEADER_FLAGS7     </td><td>(0x07) iNES rom offset of flags7 byte             </td></tr>
+				<tr class="header"><td colspan="3">System memory I/O register offsets</td></tr>
+				<tr><td>static int</td><td>REG_PPU_CTRL1      </td><td>(0x2000) PPU Control 1</td></tr>
+				<tr><td>static int</td><td>REG_PPU_CTRL2      </td><td>(0x2001) PPU Control 2</td></tr>
+				<tr><td>static int</td><td>REG_PPU_STATUS     </td><td>(0x2002)</td></tr>
+				<tr><td>static int</td><td>REG_PPU_OAM_ADDRESS</td><td>(0x2003)</td></tr>
+				<tr><td>static int</td><td>REG_PPU_OAM_IO     </td><td>(0x2004)</td></tr>
+				<tr><td>static int</td><td>REG_PPU_SCROLL     </td><td>(0x2005)</td></tr>
+				<tr><td>static int</td><td>REG_PPU_ADDRESS    </td><td>(0x2006)</td></tr>
+				<tr><td>static int</td><td>REG_PPU_IO         </td><td>(0x2007)</td></tr>
+				<tr><td>static int</td><td>REG_APU_PULSE1_CTRL</td><td>(0x4000)</td></tr>
+				<tr><td>static int</td><td>REG_APU_PULSE1_RC  </td><td>(0x4001)</td></tr>
+				<tr><td>static int</td><td>REG_APU_PULSE1_FT  </td><td>(0x4002)</td></tr>
+				<tr><td>static int</td><td>REG_APU_PULSE1_CT  </td><td>(0x4003)</td></tr>
+				<tr><td>static int</td><td>REG_APU_PULSE2_CTRL</td><td>(0x4004)</td></tr>
+				<tr><td>static int</td><td>REG_APU_PULSE2_RC  </td><td>(0x4005)</td></tr>
+				<tr><td>static int</td><td>REG_APU_PULSE2_FT  </td><td>(0x4006)</td></tr>
+				<tr><td>static int</td><td>REG_APU_PULSE2_CT  </td><td>(0x4007)</td></tr>
+				<tr><td>static int</td><td>REG_APU_TRI_CTRL1  </td><td>(0x4008)</td></tr>
+				<tr><td>static int</td><td>REG_APU_TRI_CTRL2  </td><td>(0x4009)</td></tr>
+				<tr><td>static int</td><td>REG_APU_TRI_FREQ1  </td><td>(0x400A)</td></tr>
+				<tr><td>static int</td><td>REG_APU_TRI_FREQ2  </td><td>(0x400B)</td></tr>
+				<tr><td>static int</td><td>REG_APU_NOISE_CTRL1</td><td>(0x400C)</td></tr>
+				<tr><td>static int</td><td>REG_APU_NOISE_CTRL2</td><td>(0x400D)</td></tr>
+				<tr><td>static int</td><td>REG_APU_NOISE_FREQ1</td><td>(0x400E)</td></tr>
+				<tr><td>static int</td><td>REG_APU_NOISE_FREQ2</td><td>(0x400F)</td></tr>
+				<tr><td>static int</td><td>REG_APU_DM_CTRL    </td><td>(0x4010)</td></tr>
+				<tr><td>static int</td><td>REG_APU_DM_DA      </td><td>(0x4011)</td></tr>
+				<tr><td>static int</td><td>REG_APU_DM_ADDRESS </td><td>(0x4012)</td></tr>
+				<tr><td>static int</td><td>REG_APU_DM_LENGTH  </td><td>(0x4013)</td></tr>
+				<tr><td>static int</td><td>REG_PPU_OAM_DMA    </td><td>(0x4014)</td></tr>
+				<tr><td>static int</td><td>REG_APU_VCS        </td><td>(0x4015)</td></tr>
+				<tr><td>static int</td><td>REG_JOYPAD1        </td><td>(0x4016)</td></tr>
+				<tr><td>static int</td><td>REG_JOYPAD2        </td><td>(0x4017)</td></tr>
+				<tr class="header"><td colspan="3">Joypad strobe positions</td></tr>
+				<tr><td>static int</td><td>BUTTON_A      </td> <td>(0)</td></tr>
+				<tr><td>static int</td><td>BUTTON_B      </td> <td>(1)</td></tr>
+				<tr><td>static int</td><td>BUTTON_SELECT </td> <td>(2)</td></tr>
+				<tr><td>static int</td><td>BUTTON_START  </td> <td>(3)</td></tr>
+				<tr><td>static int</td><td>BUTTON_UP     </td> <td>(4)</td></tr>
+				<tr><td>static int</td><td>BUTTON_DOWN   </td> <td>(5)</td></tr>
+				<tr><td>static int</td><td>BUTTON_LEFT   </td> <td>(6)</td></tr>
+				<tr><td>static int</td><td>BUTTON_RIGHT  </td> <td>(7)</td></tr>
+				<tr class="header"><td colspan="3">Hardware</td></tr>
+				<tr><td><a class="classlink" href="#Class_CPU6502">CPU6502</a></td><td>cpu</td><td>   Central processing unit             </td></tr>
+				<tr><td><a class="classlink" href="#Class_PPU2C02">PPU2C02</a></td><td>ppu</td><td>   Picture processing unit             </td></tr>
+				<tr><td><a class="classlink">APU2A03</a></td><td>apu</td><td>   Audio processing unit (not started) </td></tr>
+				<tr><td><a class="classlink" href="#Class_Memory">Memory</a></td><td>mem</td><td>   System/CPU memory                  </td></tr>
+				<tr><td><a class="classlink" href="#Class_Mapper">Mapper</a></td><td>mapper</td><td>   Cartridge memory mapper             </td></tr>
+				<tr class="header"><td colspan="3">Miscellaneous</td></tr>
+				<tr><td>byte[]</td><td>rom</td><td>iNES rom file data</td></tr>
+			</tbody>
+		</table>
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>void</td><td>resetMemory()</td><td>Reinstantiates mem</td></tr>
+				<tr><td>void</td><td>loadRom(String path)</td><td></td></tr>
+				<tr><td>void</td><td>runUntilVBlank()</td><td></td></tr>
+				<tr><td>void</td><td>dbgBreak()</td><td>Ends the current runUntilVBlank loop</td></tr>
+				<tr><td>void</td><td>prestep()</td><td>Does nothing by default<br><i>Invoked before every CPU step</i></td></tr>
+				<tr><td>void</td><td>poststep()</td><td>Does nothing by default<br><i>Invoked after every CPU step</i></td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="main">
+	<h1 id="Class_CPU6502">Class CPU6502</h1>
+	<div class="qualified">net.shygoo.hw.CPU6502</div>
+	<div class="container">
+		<h2>Constructor</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>-</td><td>CPU6502(Memory mem)</td><td>Constructs a new CPU6502 hardware emulator that uses mem as memory space for programs</td></tr>
+			</tbody>
+		</table>
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>int</td><td>getPC()</td><td>Returns program counter offset</td></tr>
+				<tr><td>int</td><td>getAC()</td><td>Returns Accumulator value</td></tr>
+				<tr><td>int</td><td>getXR()</td><td>Returns X index register value</td></tr>
+				<tr><td>int</td><td>getYR()</td><td>Returns Y index register value</td></tr>
+				<tr><td>int</td><td>getSP()</td><td>Returns Stack pointer value</td></tr>
+				<tr><td>int</td><td>getSR()</td><td>Returns Status register value</td></tr>
+				<tr><td>void</td><td>setPC(int value)</td><td>Sets Program counter offset</td></tr>
+				<tr><td>void</td><td>setAC(int value)</td><td>Sets Accumulator value</td></tr>
+				<tr><td>void</td><td>setXR(int value)</td><td>Sets X index register value</td></tr>
+				<tr><td>void</td><td>setYR(int value)</td><td>Sets Y index register value</td></tr>
+				<tr><td>void</td><td>setSP(int value)</td><td>Sets Stack pointer value</td></tr>
+				<tr><td>void</td><td>setSR(int value)</td><td>Sets Status register value</td></tr>
+				<tr><td>void</td><td>clock(int cycles)</td><td></td></tr>
+				<tr><td>void</td><td>nonMaskableInterrupt()</td><td></td></tr>
+				<tr><td>void</td><td>reset()</td><td></td></tr>
+				<tr><td>int</td><td>step()</td><td></td></tr>
+				<tr><td>void</td><td>setMemory(Memory mem)</td><td></td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="main">
+	<h1 id="Class_PPU2C02">Class PPU2C02</h1>
+	<div class="qualified">net.shygoo.hw.PPU2C02</div>
+	<div class="container">
+		<h2>Constructor</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>-</td><td>PPU2C02(Memory chrMem)</td><td>Constructs a PPU2C02 hardware emulator that uses chrMem as character memory space</td></tr>
+			</tbody>
+		</table>
+		<h2>Fields</h2>
+		<table class="members">
+			<tr class="header"><td colspan="3">Mirroring mode constants</td></tr>
+			<tbody>
+				<tr><td>static int</td><td>MIRRORING_ONESCREEN  </td><td>(0)</td></tr>
+				<tr><td>static int</td><td>MIRRORING_HORIZONTAL </td><td>(1)</td></tr>
+				<tr><td>static int</td><td>MIRRORING_VERTICAL   </td><td>(2)</td></tr>
+				<tr><td>static int</td><td>MIRRORING_FOURSCREEN </td><td>(3)</td></tr>
+				<tr class="header"><td colspan="3">Hardware</td></tr>
+				<tr><td>Memory      </td><td>mem     </td><td>PPU main memory                     </td></tr>
+				<tr><td>byte[0x100] </td><td>oam     </td><td>PPU object attribute (sprite) memory</td></tr>
+				<tr><td>Memory      </td><td>chrMem  </td><td>Cartridge character memory          </td></tr>
+				<tr class="header"><td colspan="3">Internal states</td></tr>
+				<tr><td>int         </td><td>scrollX         </td><td>                                     </td></tr>
+				<tr><td>int         </td><td>scrollY         </td><td>                                     </td></tr>
+				<tr><td>int         </td><td>scrollState     </td><td> // 0 = x, 1 = y // todo consts</td></tr>
+				<tr><td>int         </td><td>address         </td><td>                                     </td></tr>
+				<tr><td>int         </td><td>addressState    </td><td> // 0 = address msb, 1 = address lsb //todo consts</td></tr>
+				<tr><td>int         </td><td>nameTableOffset </td><td>                                     </td></tr>
+				<tr><td>int         </td><td>increment       </td><td>                                     </td></tr>
+				<tr><td>int         </td><td>pTableSprOffset </td><td>                                     </td></tr>
+				<tr><td>int         </td><td>pTableBgOffset  </td><td>                                     </td></tr>
+				<tr><td>int         </td><td>sprSize         </td><td>                                     </td></tr>
+				<tr><td>boolean     </td><td>nmi             </td><td>                                     </td></tr>
+				<tr><td>boolean     </td><td>monochrome      </td><td>                                     </td></tr>
+				<tr><td>boolean     </td><td>clipBg          </td><td>                                     </td></tr>
+				<tr><td>boolean     </td><td>clipSpr         </td><td>                                     </td></tr>
+				<tr><td>boolean     </td><td>showBg          </td><td>                                     </td></tr>
+				<tr><td>boolean     </td><td>showSpr         </td><td>                                     </td></tr>
+				<tr><td>int         </td><td>bgColor         </td><td>                                     </td></tr>
+				<tr class="header"><td colspan="3">Miscellaneous</td></tr>
+				<tr><td>int[0x10000]</td><td>display         </td><td>     RGB888 frame buffer             </td></tr>
+				<tr><td>int         </td><td>currentScanline </td><td>    // max at 262                    </td></tr>
+			</tbody>
+		</table>
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>void</td><td>incAddress() // todo make private</td><td></td></tr>
+				<tr><td>int</td><td>readNext()</td><td></td></tr>
+				<tr><td>void</td><td>writeNext(int value)</td><td></td></tr>
+				<tr><td>void</td><td>resetScanlines()</td><td></td></tr>
+				<tr><td>boolean</td><td>getSprite0Hit()</td><td> // todo isSpriteZeroHit()</td></tr>
+				<tr><td>boolean</td><td>getScanline8Sprites()</td><td>// todo change to isSpriteOverflow()</td></tr>
+				<tr><td>void</td><td>drawSpritesLine() // todo make private</td><td></td></tr>
+				<tr><td>void</td><td>drawBackgroundLine() // todo make private</td><td></td></tr>
+				<tr><td>void</td><td>drawScanline()</td><td></td></tr>
+				<tr><td>void</td><td>setChrMem(Memory chrMem)</td><td></td></tr>
+				<tr><td>void</td><td>resetMemory()</td><td></td></tr>
+				<tr><td>void</td><td>setMirroringMode(int mirroringMode)</td><td>Sets the nametable screen mirroring mode</td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="main">
+	<h1 id="Class_Memory">Abstract Class Memory</h1>
+	<div class="qualified">net.shygoo.misc.Memory</div>
+	<div class="container">
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>abstract int</td><td>read(int offset, boolean doEvents)</td><td>return integer from memory</td></tr>
+				<tr><td>abstract void</td><td>write(int offset, int value, boolean doEvents)</td><td>write integer to memory</td></tr>
+				<tr><td>int</td><td>read(int offset)</td><td>wrapper for read that defaults doEvents to true // TODO make false</td></tr>
+				<tr><td>void</td><td>write(int offset, int value)</td><td>wrapper for write that defaults doEvents to true // TODO make false</td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="main">
+	<h1 id="Class_Mapper">Abstract Class Mapper</h1>
+	<div class="qualified">net.shygoo.emuname.mapper.Mapper</div>
+	<div class="container">
+		<h2>Constructor</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>protected</td><td>Mapper(NES nes)</td><td>Constructs a Mapper</td></tr>
+			</tbody>
+		</table>
+		<h2>Fields</h2>
+		<table class="members">
+			<tbody>
+				<tr class="header"><td colspan="3">Hardware</td></tr>
+				<tr><td><a class="classlink" href="#Class_Memory">Memory</a></td><td>chrMem</td><td>Memory representing cartridge character rom / video ram</td></tr>
+				<tr><td><a class="classlink"  href="#Class_Memory">Memory</a></td><td>prgMem</td><td>Memory representing cartridge program rom</td></tr>
+			</tbody>
+		</table>
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<!--<tr><td>static <a class="classlink" href="#Class_Mapper">Mapper</a></td><td>createMapperById(int iNESMapperId)</td><td>Create mapper object given an iNES mapper ID</td></tr>-->
+				<tr><td>int</td><td>getDefaultPrgA()</td><td>Get load-time program bank A number</td></tr>
+				<tr><td>int</td><td>getDefaultPrgB()</td><td>Get load-time program bank B number</td></tr>
+				<tr><td>void</td><td>setPrgA(int bank)</td><td>Maps program segment A to a ROM bank</td></tr>
+				<tr><td>void</td><td>setPrgB(int bank)</td><td>Maps program segment B to a ROM bank</td></tr>
+				<tr><td>int</td><td>getPrgA()</td><td>Returns ROM bank number of program segment A</td></tr>
+				<tr><td>int</td><td>getPrgB()</td><td>Returns ROM bank number of program segment B</td></tr>
+				<tr><td>void</td><td>setPrgsDefault()</td><td>Maps both program segments to their default ROM banks</td></tr>
+				<tr><td>abstract String</td><td>getName()</td><td>Returns the name of the mapper</td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="main">
+	<h1 id="Class_PixelCanvas">Class PixelCanvas</h1>
+	<div class="qualified">net.shygoo.component.PixelCanvas extends <a target="_blank" class="extlink" href="https://docs.oracle.com/javase/7/docs/api/javax/swing/JPanel.html">javax.swing.JPanel</a></div>
+	<div class="container">
+		<h2>Constructor</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>-</td><td>PixelCanvas(int width, int height, int[] rgbArray)</td><td>Constructs a PixelCanvas<br>paint() is overridden to draw whatever is in the rgbArray buffer</td></tr>
+			</tbody>
+		</table>
+		<h2>Methods</h2>
+		<table class="members">
+			<tbody>
+				<tr><td>void</td><td>setScale(int scale)</td><td>Sets the scale of the component</td></tr>
+				<tr><td>int </td><td>getScale()</td><td>Returns the current scale of the component</td></tr>
+				<tr><td>void</td><td>setDefaultDrawingEnabled(boolean setting)</td><td>Prevents rgbArray from drawing to the component if false<br><i>Should be used when the default drawing technique needs to be replaced (eg upscaling filters)</i></td></tr>
+				<tr><td>boolean</td><td>getDefaultDrawingEnabled()</td><td>Returns defaultDrawing</td></tr>
+				<tr><td>void</td><td>setImageSmoothingEnabled(boolean setting)</td><td>Enables or disables bilinear smoothing based on setting // Not needed, todo move to plugin</td></tr>
+				<tr><td>void</td><td>setRgbArray(int[] rgbArray)</td><td>Changes the rgb buffer</td></tr>
+				<tr><td><a class="extlink" target="_blank" href="https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics2D.html">Graphics2D</a></td><td>getActiveG2d()</td><td>Returns the last Graphics2D object passed to paint()<br><i>Should be used in the postframe() method for correct timing</i></td></tr>
+				<tr><td>void</td><td>preframe()</td><td>Can be overriden to provide a hook in paint() for before the image is drawn<br><i>Changes can be made to rgbArray here</i><br><i>Changes can be made to the Graphics2D object here if default drawing is disabled</i></td></tr>
+				<tr><td>void</td><td>postframe()</td><td>Can be overriden to provide hook in paint() for after the image is drawn<br><i>Changes can be made to the current Graphics2D object here</i></td></tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="main">
+<h1 id="Script_engine">Script engine</h1>
+<div class="container">
+	<h2>Global properties</h2>
+	<div class="subcontainer">
+		<h3>emuname</h3>
+		Reference to the <a class="classlink" href="#Class_Emuname">Emuname</a> object<br><br>
+		<h3>nes</h3>
+		Reference to the <a class="classlink" href="#Class_NES">NES</a> object<br><br>
+		<h3>frameEvents</h3>
+		Management object for a list of javascript functions to be called by the emulation thread during every VBlank phase<br>
+		&nbsp;&bull;&nbsp;<b>frameEvents.add(callback)</b> -- Adds a function and returns its ID<br>
+		&nbsp;&bull;&nbsp;<b>frameEvents.remove(id)</b> -- Removes a function by its ID<br>
+		&nbsp;&bull;&nbsp;<b>frameEvents.clear()</b> -- Removes all functions<br>
+		&nbsp;&bull;&nbsp;<b>frameEvents.run()</b> -- Executes all functions (called automatically)<br><br>
+		<i>For built in globals, refer to the <a class="extlink" href="http://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/">Nashorn API documentation</a> or try <span class="snip">print(Object.getOwnPropertyNames(this))</span></i>
+	</div>
+	<h2>Example scripts</h2>
+	<div class="subcontainer">
+		<i>Sink all enemy players in Balloon Fight:</i><br>
+		<div class="javascript code">var OFFSET_ENEMIES_Y = 0x009C;
+var ENEMIES_MAX_COUNT = 6;
+
+frameEvents.add(function(){
+  for(var i = 0; i &lt; ENEMIES_MAX_COUNT; i++){
+    var offsetY = OFFSET_ENEMIES_Y + i;
+    var y = nes.mem.read(offsetY);
+    nes.mem.write(offsetY, y + 5);
+  }
+});</div>
+		<br>
+		<i>Frame buffer color inversion:</i><br>
+		<div class="javascript code">frameEvents.add(function(){
+  for(var i = 0; i &lt; nes.ppu.display.length; i++){
+    nes.ppu.display[i] = ~nes.ppu.display[i];
+  }
+});</div>
+		<br>
+	</div>
+</div>
+</div>
+<div class="main" style="margin-bottom: 0px; padding-top: 5px; padding-bottom: 5px;">
+	<center><a href="http://shygoo.net/">shygoo.net</a></center>
+</div>
+<script>
+function Highlighter(){
+	this._classes = [];
+}
+
+Highlighter.prototype.addClass = function(hClass){
+	this._classes.push(hClass);
+};
+
+Highlighter.applyMarkup = function(str, hClass){
+	var rules = hClass.rules;
+	var skipRule = hClass.skipRule;
+	var newHtml = "";
+  main:
+	for(var pos = 0; pos < str.length;){
+		var gotMatch = false;
+		var curString = str.substr(pos);
+		for(var k in rules){
+			if(curMatch = curString.match(rules[k])){ // matched rule, apply highlighting
+				var origStr = curMatch[0];
+				var origLen = origStr.length;
+				var newStr = "<span class=\"" + k + "\">" + origStr +"</span>";
+				newHtml += newStr;
+				pos += origLen;
+				gotMatch = true;
+				continue main;
+			}
+		}
+		if(curMatch = curString.match(skipRule)){ // pass over matched skipRule without highlighting
+			newHtml += curMatch[0];
+			pos += curMatch[0].length;
+		} else { // pass over single character
+			newHtml += str[pos];
+			pos++;
+		}
+	}
+	return newHtml;
+};
+
+Highlighter.prototype.highlight = function(){
+	for(var i in this._classes){
+		var hClass = this._classes[i];
+		var className = hClass.className;
+		var domElements = document.getElementsByClassName(className);
+		for(var j = 0; j < domElements.length; j++){
+			domElements[j].innerHTML = Highlighter.applyMarkup(domElements[j].innerHTML, hClass);
+		}
+	}
+};
+
+Highlighter.Java = {
+	className: "java",
+	rules: {
+		'c0': /^(".+?")/, // string literals
+		'c1': /^((?:&amp;|&gt;|&lt;|[\(\)\[\]\{\}\=\-\+\*\,\/\;\.\~])+)/, // operators
+		'c2': /^(package|class|public|private|static|protected|final|abstract|int|char|void|byte|boolean)/, // types/modifiers
+		'c3': /^(import|super|new|extends|implements|this)/, // constructs
+		'c4': /^(\d[\dA-Za-z]*)/, // numeric literals
+	},
+	skipRule: /^([A-Za-z][A-Za-z\d]*)/
+};
+
+Highlighter.Javascript = {
+	className: "javascript",
+	rules: {
+		'c0': /^(".+?")/,
+		'c1': /^(&amp;|&gt;|&lt;|[\(\)\[\]\{\}\=\-\+\*\,\/\;\.\~]+)/,
+		'c2': /^(var|function)/,
+		'c3': /^(new|return|if|for|while)/,
+		'c4': /^(\d[\dA-Za-z]*)/,
+	},
+	skipRule: /^([A-Za-z][A-Za-z\d]*)/
+};
+
+(function(){
+	var hl = new Highlighter();
+	hl.addClass(Highlighter.Java);
+	hl.addClass(Highlighter.Javascript);
+	hl.highlight();
+})();
+
+</script>
+</body>
+</html>

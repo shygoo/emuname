@@ -1,0 +1,6 @@
+Debugger.java
+MemoryWindow2.java
+CommandsWindow.java
+MemoryScanner.java
+ScriptWindow.java
+PPUWindow.java
