@@ -27,4 +27,4 @@ RIGHT ... d
 * http://nickmass.com/images/nestest.log
 * http://wiki.nesdev.com/w/index.php/INES
  
-Warning: The audio will will cause hearing loss.
+Warning: The audio will cause hearing loss.
